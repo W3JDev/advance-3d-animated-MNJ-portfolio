@@ -15,7 +15,7 @@
     "test:ui": "vitest --ui",
     "deploy": "npm run build && echo 'Build complete! Ready for deployment.'",
     "deploy:vercel": "vercel --prod",
-    "deploy:preview": "vercel"
+    "deploy:preview": "vercel",
     "test:coverage": "vitest --coverage"
   },
   "dependencies": {
