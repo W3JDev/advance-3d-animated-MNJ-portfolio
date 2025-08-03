@@ -44,11 +44,11 @@ export const TrustBuildingSection: React.FC = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 text-shadow-lg">
             Why <span className="text-blue-400">Fortune 500s</span> Trust Me
           </h2>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            When your business is on the line, you need someone who delivers. 
+          <p className="text-xl text-gray-200 max-w-3xl mx-auto">
+            When your business is on the line, you need someone who delivers.
             Here's why industry leaders choose my expertise.
           </p>
         </motion.div>
@@ -60,13 +60,13 @@ export const TrustBuildingSection: React.FC = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10 hover:border-white/20 transition-all duration-300 group"
+              className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20 hover:border-white/30 transition-all duration-300 group"
             >
               <div className={`w-16 h-16 bg-${indicator.color}-500/20 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform`}>
                 <indicator.icon className={`w-8 h-8 text-${indicator.color}-400`} />
               </div>
               <h3 className="text-xl font-bold text-white mb-3">{indicator.title}</h3>
-              <p className="text-gray-300 leading-relaxed">{indicator.description}</p>
+              <p className="text-gray-200 leading-relaxed">{indicator.description}</p>
             </motion.div>
           ))}
         </div>
@@ -76,20 +76,20 @@ export const TrustBuildingSection: React.FC = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.5 }}
-          className="mt-16 bg-gradient-to-r from-blue-900/30 to-purple-900/30 rounded-2xl p-8 border border-blue-500/20"
+          className="mt-16 bg-gradient-to-r from-blue-900/50 to-purple-900/50 rounded-2xl p-8 border border-blue-500/40"
         >
           <div className="grid md:grid-cols-3 gap-8 text-center">
             <div>
               <div className="text-4xl font-bold text-blue-400 mb-2">$2.5M+</div>
-              <div className="text-gray-300">Revenue Generated for Clients</div>
+              <div className="text-gray-200">Revenue Generated for Clients</div>
             </div>
             <div>
               <div className="text-4xl font-bold text-green-400 mb-2">99.8%</div>
-              <div className="text-gray-300">Uptime Across All Projects</div>
+              <div className="text-gray-200">Uptime Across All Projects</div>
             </div>
             <div>
               <div className="text-4xl font-bold text-purple-400 mb-2">48hrs</div>
-              <div className="text-gray-300">Average Project Start Time</div>
+              <div className="text-gray-200">Average Project Start Time</div>
             </div>
           </div>
         </motion.div>
@@ -146,7 +146,7 @@ export const ProcessTransparencySection: React.FC = () => {
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
             My <span className="text-green-400">Proven Process</span>
           </h2>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-200 max-w-3xl mx-auto">
             No surprises, no hidden costs. Here's exactly how I transform your vision into reality.
           </p>
         </motion.div>
@@ -163,7 +163,7 @@ export const ProcessTransparencySection: React.FC = () => {
               }`}
             >
               {/* Step Content */}
-              <div className="flex-1 bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10">
+              <div className="flex-1 bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
                 <div className="flex items-center gap-4 mb-6">
                   <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center">
                     <span className="text-white font-bold text-xl">{step.step}</span>
@@ -173,7 +173,7 @@ export const ProcessTransparencySection: React.FC = () => {
                     <p className="text-blue-400 font-medium">{step.duration}</p>
                   </div>
                 </div>
-                <p className="text-gray-300 text-lg leading-relaxed mb-4">
+                <p className="text-gray-200 text-lg leading-relaxed mb-4">
                   {step.description}
                 </p>
                 <div className="flex items-center gap-2 text-green-400">

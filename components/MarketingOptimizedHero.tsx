@@ -79,8 +79,8 @@ export const MarketingOptimizedHero: React.FC = () => {
       />
 
       {/* Premium Container with Proper Spacing */}
-      <div className="max-w-7xl mx-auto px-8 lg:px-16 relative z-10 py-16">
-        <div className="grid lg:grid-cols-2 gap-20 items-center min-h-screen">
+      <div className="max-w-7xl mx-auto px-8 lg:px-16 relative z-10 py-8">
+        <div className="grid lg:grid-cols-2 gap-20 items-center min-h-[80vh]">
           {/* Left Column - Value Proposition */}
           <motion.div
             style={{ y: textY }}
@@ -113,7 +113,7 @@ export const MarketingOptimizedHero: React.FC = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
-              className="text-5xl md:text-7xl font-black text-white mb-6 leading-tight"
+              className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-4 leading-tight"
             >
               Transform Your
               <span className="bg-gradient-to-r from-blue-400 via-purple-500 to-cyan-400 bg-clip-text text-transparent block">
@@ -134,7 +134,7 @@ export const MarketingOptimizedHero: React.FC = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
-                className="text-2xl text-gray-300 font-light"
+                className="text-lg md:text-xl text-gray-300 font-light"
               >
                 {roles[currentRole]}
               </motion.p>
