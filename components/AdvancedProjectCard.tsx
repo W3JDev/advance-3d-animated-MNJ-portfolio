@@ -67,55 +67,55 @@ export function AdvancedProjectCard({ project, index, onViewCaseStudy }: Advance
       viewport={{ once: true, margin: "-20px" }}
       className="group relative w-full"
     >
-      <div className="relative bg-black/60 backdrop-blur-xl border border-white/20 rounded-2xl p-6 hover:border-white/30 transition-all duration-500 overflow-hidden h-full flex flex-col min-h-[500px]">
-        {/* Gradient background overlay */}
-        <div className={`absolute inset-0 bg-gradient-to-br ${safeProject.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-500 rounded-2xl`} />
-        
-        {/* Category badge */}
-        <div className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-medium mb-4 bg-gradient-to-r ${safeProject.gradient} text-white border border-white/30 self-start`}>
+      <div className="relative bg-black/90 backdrop-blur-xl border border-white/30 rounded-2xl p-6 hover:border-white/50 transition-all duration-300 overflow-hidden h-full flex flex-col min-h-[500px] shadow-2xl">
+        {/* Enhanced gradient background overlay */}
+        <div className={`absolute inset-0 bg-gradient-to-br ${safeProject.gradient} opacity-0 group-hover:opacity-15 transition-opacity duration-300 rounded-2xl`} />
+
+        {/* Category badge - Enhanced visibility */}
+        <div className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold mb-4 bg-gradient-to-r ${safeProject.gradient} text-white border border-white/50 self-start shadow-lg`}>
           {safeProject.category}
         </div>
 
-        {/* Project title - Ensure it's always visible */}
-        <h3 className="text-xl md:text-2xl font-bold text-white mb-3 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:bg-clip-text group-hover:from-white group-hover:to-gray-300 transition-all duration-300">
+        {/* Project title - Enhanced readability */}
+        <h3 className="text-xl md:text-2xl font-bold text-white mb-3 leading-tight tracking-tight">
           {safeProject.title}
         </h3>
 
-        {/* Description */}
-        <p className="text-gray-300 text-sm md:text-base mb-6 line-clamp-3 flex-1">
+        {/* Description - Better contrast */}
+        <p className="text-gray-100 text-sm md:text-base mb-6 line-clamp-3 flex-1 leading-relaxed">
           {safeProject.description}
         </p>
 
-        {/* Project meta info */}
+        {/* Project meta info - Enhanced visibility */}
         <div className="grid grid-cols-3 gap-3 mb-6 text-xs">
-          <div className="flex items-center gap-1 text-gray-400">
-            <Calendar className="w-3 h-3 flex-shrink-0" />
-            <span className="truncate">{safeProject.year}</span>
+          <div className="flex items-center gap-1 text-gray-200">
+            <Calendar className="w-3 h-3 flex-shrink-0 text-white/80" />
+            <span className="truncate font-medium">{safeProject.year}</span>
           </div>
-          <div className="flex items-center gap-1 text-gray-400">
-            <Clock className="w-3 h-3 flex-shrink-0" />
-            <span className="truncate">{safeProject.duration}</span>
+          <div className="flex items-center gap-1 text-gray-200">
+            <Clock className="w-3 h-3 flex-shrink-0 text-white/80" />
+            <span className="truncate font-medium">{safeProject.duration}</span>
           </div>
-          <div className="flex items-center gap-1 text-gray-400">
-            <Users className="w-3 h-3 flex-shrink-0" />
-            <span className="truncate">{safeProject.teamSize}</span>
+          <div className="flex items-center gap-1 text-gray-200">
+            <Users className="w-3 h-3 flex-shrink-0 text-white/80" />
+            <span className="truncate font-medium">{safeProject.teamSize}</span>
           </div>
         </div>
 
-        {/* Tech stack - Safe array handling */}
+        {/* Tech stack - Enhanced readability */}
         {safeProject.tech.length > 0 && (
           <div className="mb-6">
             <div className="flex flex-wrap gap-2">
               {safeProject.tech.slice(0, 4).map((tech, techIndex) => (
-                <span 
+                <span
                   key={`${tech}-${techIndex}`}
-                  className="px-2 py-1 text-xs bg-white/10 text-gray-300 rounded-md border border-white/20 font-medium"
+                  className="px-3 py-1.5 text-xs bg-white/20 text-white rounded-lg border border-white/30 font-semibold backdrop-blur-sm hover:bg-white/30 transition-colors duration-200"
                 >
                   {tech}
                 </span>
               ))}
               {safeProject.tech.length > 4 && (
-                <span className="px-2 py-1 text-xs bg-white/10 text-gray-400 rounded-md border border-white/20">
+                <span className="px-3 py-1.5 text-xs bg-white/15 text-gray-200 rounded-lg border border-white/25 font-medium">
                   +{safeProject.tech.length - 4} more
                 </span>
               )}
@@ -123,43 +123,43 @@ export function AdvancedProjectCard({ project, index, onViewCaseStudy }: Advance
           </div>
         )}
 
-        {/* Stats - Safe array handling with better fallback */}
+        {/* Stats - Enhanced visual hierarchy */}
         <div className="grid grid-cols-3 gap-3 mb-6">
           {safeProject.stats && safeProject.stats.length > 0 ? (
             safeProject.stats.slice(0, 3).map((stat, statIndex) => (
-              <div key={`${stat.metric}-${statIndex}`} className="text-center">
+              <div key={`${stat.metric}-${statIndex}`} className="text-center bg-white/5 rounded-lg p-3 border border-white/10">
                 <div className="text-lg font-bold text-white mb-1">
                   {stat.value}
                 </div>
-                <div className="text-xs text-gray-400 leading-tight">
+                <div className="text-xs text-gray-200 leading-tight font-medium">
                   {stat.metric}
                 </div>
               </div>
             ))
           ) : (
-            // Default stats when none provided
+            // Default stats when none provided - Enhanced styling
             <>
-              <div className="text-center">
+              <div className="text-center bg-white/5 rounded-lg p-3 border border-white/10">
                 <div className="text-lg font-bold text-white mb-1">
                   {safeProject.year}
                 </div>
-                <div className="text-xs text-gray-400 leading-tight">
+                <div className="text-xs text-gray-200 leading-tight font-medium">
                   Year
                 </div>
               </div>
-              <div className="text-center">
+              <div className="text-center bg-white/5 rounded-lg p-3 border border-white/10">
                 <div className="text-lg font-bold text-white mb-1">
                   {safeProject.tech.length}+
                 </div>
-                <div className="text-xs text-gray-400 leading-tight">
+                <div className="text-xs text-gray-200 leading-tight font-medium">
                   Technologies
                 </div>
               </div>
-              <div className="text-center">
+              <div className="text-center bg-white/5 rounded-lg p-3 border border-white/10">
                 <div className="text-lg font-bold text-white mb-1">
                   ⭐
                 </div>
-                <div className="text-xs text-gray-400 leading-tight">
+                <div className="text-xs text-gray-200 leading-tight font-medium">
                   Featured
                 </div>
               </div>
@@ -167,19 +167,19 @@ export function AdvancedProjectCard({ project, index, onViewCaseStudy }: Advance
           )}
         </div>
 
-        {/* Action buttons - Fixed container to prevent overflow */}
+        {/* Action buttons - Enhanced styling and performance */}
         <div className="mt-auto flex gap-3 items-center">
           <motion.button
             onClick={() => onViewCaseStudy(safeProject)}
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
-            className="flex-1 flex items-center justify-center gap-2 px-4 py-3 bg-white/10 hover:bg-white/20 border border-white/20 rounded-xl text-white text-sm font-medium transition-all duration-300 backdrop-blur-sm"
+            className="flex-1 flex items-center justify-center gap-2 px-4 py-3 bg-white/20 hover:bg-white/30 border border-white/30 rounded-xl text-white text-sm font-semibold transition-all duration-200 backdrop-blur-sm shadow-lg hover:shadow-xl"
           >
             <Eye className="w-4 h-4 flex-shrink-0" />
             <span className="truncate">View Case Study</span>
           </motion.button>
 
-          {/* Fixed icon buttons container to prevent overflow */}
+          {/* Enhanced icon buttons */}
           <div className="flex gap-2 flex-shrink-0">
             {safeProject.githubUrl && (
               <motion.a
@@ -188,7 +188,7 @@ export function AdvancedProjectCard({ project, index, onViewCaseStudy }: Advance
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
-                className="w-12 h-12 flex items-center justify-center bg-white/10 hover:bg-white/20 border border-white/20 rounded-xl text-white transition-all duration-300 backdrop-blur-sm flex-shrink-0"
+                className="w-12 h-12 flex items-center justify-center bg-white/20 hover:bg-white/30 border border-white/30 rounded-xl text-white transition-all duration-200 backdrop-blur-sm flex-shrink-0 shadow-lg hover:shadow-xl"
                 title="View on GitHub"
               >
                 <Github className="w-4 h-4" />
@@ -202,7 +202,7 @@ export function AdvancedProjectCard({ project, index, onViewCaseStudy }: Advance
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
-                className="w-12 h-12 flex items-center justify-center bg-white/10 hover:bg-white/20 border border-white/20 rounded-xl text-white transition-all duration-300 backdrop-blur-sm flex-shrink-0"
+                className="w-12 h-12 flex items-center justify-center bg-white/20 hover:bg-white/30 border border-white/30 rounded-xl text-white transition-all duration-200 backdrop-blur-sm flex-shrink-0 shadow-lg hover:shadow-xl"
                 title="Live Demo"
               >
                 <ExternalLink className="w-4 h-4" />

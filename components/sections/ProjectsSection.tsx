@@ -6,6 +6,8 @@ import { PremiumHeading, PremiumText, PremiumContainer } from '../PremiumTypogra
 import { PremiumButton } from '../PremiumButton';
 import { SafeMagneticButton } from '../SafeMagneticButton';
 import { animationConfig } from '../../constants/portfolioConstants';
+import { OptimizedMotion } from '../PerformanceOptimizer';
+import { StaggeredLoader, LazyWrapper } from '../ProgressiveLoader';
 
 interface ProjectsSectionProps {
   projects: any[];
@@ -15,12 +17,12 @@ interface ProjectsSectionProps {
 
 export function ProjectsSection({ projects, settings, onViewCaseStudy }: ProjectsSectionProps) {
   return (
-    <section className="py-24 bg-gradient-to-b from-purple-950/20 via-black to-blue-950/20">
+    <section id="projects" className="py-24 bg-gradient-to-b from-purple-950/20 via-black to-blue-950/20">
       <PremiumContainer>
-        <motion.div 
+        <OptimizedMotion
           className="text-center mb-20"
           initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={animationConfig.pageTransition}
           viewport={{ once: true, margin: animationConfig.viewportMargin }}
         >
@@ -30,17 +32,21 @@ export function ProjectsSection({ projects, settings, onViewCaseStudy }: Project
           <PremiumText size="xl" color="secondary" className="max-w-4xl mx-auto">
             Real-world solutions delivering measurable business impact
           </PremiumText>
-        </motion.div>
-        
-        {/* Projects Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-          {projects.map((project, index) => (
-            <AdvancedProjectCard 
+        </OptimizedMotion>
+
+        {/* Projects Grid - 2 columns, 3 rows for 6 projects */}
+        <div className="grid lg:grid-cols-2 gap-8 mb-16">
+          {projects.slice(0, 6).map((project, index) => (
+            <LazyWrapper
               key={project.id}
-              project={project} 
-              index={index}
-              onViewCaseStudy={onViewCaseStudy}
-            />
+              className="w-full"
+            >
+              <AdvancedProjectCard
+                project={project}
+                index={index}
+                onViewCaseStudy={onViewCaseStudy}
+              />
+            </LazyWrapper>
           ))}
         </div>
 

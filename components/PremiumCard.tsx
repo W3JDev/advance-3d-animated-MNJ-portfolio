@@ -107,7 +107,7 @@ export function PremiumGlassCard({
         group
         ${className}
       `}
-      whileHover={{ 
+      whileHover={{
         scale: 1.02,
         transition: { duration: 0.3 }
       }}

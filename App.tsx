@@ -17,6 +17,11 @@ import { SafeMagneticButton } from './components/SafeMagneticButton';
 import { OptimizedStarfield } from './components/OptimizedStarfield';
 import { OptimizedHeroSection } from './components/OptimizedHeroSection';
 
+// Performance and accessibility components
+import { PerformanceProvider, OptimizedMotion } from './components/PerformanceOptimizer';
+import { SmartPreloader, LazyWrapper } from './components/ProgressiveLoader';
+import { AccessibilityProvider, SkipToContent } from './components/AccessibilityEnhancements';
+
 // Section components
 import { IntroductionSection } from './components/sections/IntroductionSection';
 import { MethodologySection } from './components/sections/MethodologySection';
@@ -181,9 +186,26 @@ function AppContent() {
 }
 
 export default function App() {
+  // Critical resources to preload
+  const criticalResources = [
+    // Add any critical fonts, images, or assets here
+    '/fonts/inter-var.woff2',
+    // Add other critical resources as needed
+  ];
+
   return (
-    <StaticDataProvider>
-      <AppContent />
-    </StaticDataProvider>
+    <AccessibilityProvider>
+      <PerformanceProvider>
+        <SmartPreloader
+          resources={criticalResources}
+          onComplete={() => console.log('Critical resources loaded')}
+        >
+          <SkipToContent />
+          <StaticDataProvider>
+            <AppContent />
+          </StaticDataProvider>
+        </SmartPreloader>
+      </PerformanceProvider>
+    </AccessibilityProvider>
   );
 }

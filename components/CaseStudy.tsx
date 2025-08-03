@@ -267,69 +267,234 @@ export function CaseStudy({ project, onClose }: CaseStudyProps) {
               </div>
             </motion.div>
 
-            {/* Challenge, Solution, Results */}
+            {/* Challenge, Solution, Results - Premium 3D Enhanced */}
             <div className="grid lg:grid-cols-3 gap-8 mb-20">
+              {/* The Challenge Card */}
               <motion.div
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 40 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.4 }}
+                transition={{ delay: 0.4, duration: 0.6 }}
+                whileHover={{ y: -12, scale: 1.02 }}
+                className="group"
               >
-                <Card className="h-full bg-gradient-to-br from-red-900/20 to-orange-900/20 border border-red-500/20 backdrop-blur-xl overflow-hidden group">
-                  <CardContent className="p-8">
-                    <div className="flex items-center gap-4 mb-6">
-                      <div className="w-12 h-12 bg-red-500/20 rounded-xl flex items-center justify-center border border-red-500/30">
-                        <Target className="w-6 h-6 text-red-400" />
-                      </div>
-                      <h3 className="text-2xl font-bold text-white">The Challenge</h3>
+                <Card className="h-full bg-black/50 backdrop-blur-xl border border-white/20 hover:border-red-400/40 transition-all duration-500 relative overflow-hidden">
+                  {/* Premium 3D gradient border animation */}
+                  <motion.div
+                    className="absolute inset-0 bg-gradient-to-r from-red-600 via-orange-600 to-red-600 opacity-0 group-hover:opacity-25 blur-xl transition-opacity duration-500"
+                  />
+
+                  {/* 3D depth layers */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  <div className="absolute inset-1 bg-gradient-to-br from-red-500/10 to-transparent rounded-xl opacity-50" />
+                  <div className="absolute inset-2 bg-gradient-to-br from-red-500/5 to-transparent rounded-lg opacity-30" />
+
+                  <CardContent className="p-10 relative z-10">
+                    <div className="flex items-center gap-5 mb-8">
+                      <motion.div
+                        className="w-16 h-16 bg-gradient-to-br from-red-500 to-orange-500 rounded-2xl flex items-center justify-center border border-red-400/30 shadow-2xl relative"
+                        animate={{
+                          boxShadow: [
+                            "0 0 20px rgba(239, 68, 68, 0.3)",
+                            "0 0 30px rgba(249, 115, 22, 0.4)",
+                            "0 0 20px rgba(239, 68, 68, 0.3)"
+                          ]
+                        }}
+                        transition={{
+                          duration: 3,
+                          repeat: Infinity,
+                          ease: "easeInOut"
+                        }}
+                        whileHover={{ scale: 1.1, rotateY: 15 }}
+                      >
+                        {/* 3D highlight */}
+                        <div className="absolute inset-2 bg-gradient-to-br from-white/30 to-transparent rounded-xl" />
+                        <Target className="w-8 h-8 text-white relative z-10" />
+                      </motion.div>
+                      <h3 className="text-3xl font-black text-white bg-gradient-to-r from-white to-red-200 bg-clip-text text-transparent">
+                        The Challenge
+                      </h3>
                     </div>
-                    <p className="text-gray-300 leading-relaxed font-light text-lg">
+                    <p className="text-white leading-relaxed font-medium text-lg tracking-wide">
                       {project.challenge}
                     </p>
+
+                    {/* Premium shine effect */}
+                    <motion.div
+                      className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent w-32 -translate-x-full"
+                      animate={{
+                        translateX: ['0%', '200%']
+                      }}
+                      transition={{
+                        duration: 2.5,
+                        ease: 'easeInOut',
+                        repeat: Infinity,
+                        repeatDelay: 6
+                      }}
+                    />
+
+                    {/* Corner accents */}
+                    <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-bl from-red-400/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                    <div className="absolute bottom-0 left-0 w-20 h-20 bg-gradient-to-tr from-red-400/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   </CardContent>
                 </Card>
               </motion.div>
 
+              {/* The Solution Card */}
               <motion.div
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 40 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.5 }}
+                transition={{ delay: 0.5, duration: 0.6 }}
+                whileHover={{ y: -12, scale: 1.02 }}
+                className="group"
               >
-                <Card className="h-full bg-gradient-to-br from-blue-900/20 to-purple-900/20 border border-blue-500/20 backdrop-blur-xl overflow-hidden group">
-                  <CardContent className="p-8">
-                    <div className="flex items-center gap-4 mb-6">
-                      <div className="w-12 h-12 bg-blue-500/20 rounded-xl flex items-center justify-center border border-blue-500/30">
-                        <Lightbulb className="w-6 h-6 text-blue-400" />
-                      </div>
-                      <h3 className="text-2xl font-bold text-white">The Solution</h3>
+                <Card className="h-full bg-black/50 backdrop-blur-xl border border-white/20 hover:border-blue-400/40 transition-all duration-500 relative overflow-hidden">
+                  {/* Premium 3D gradient border animation */}
+                  <motion.div
+                    className="absolute inset-0 bg-gradient-to-r from-blue-600 via-purple-600 to-blue-600 opacity-0 group-hover:opacity-25 blur-xl transition-opacity duration-500"
+                  />
+
+                  {/* 3D depth layers */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  <div className="absolute inset-1 bg-gradient-to-br from-blue-500/10 to-transparent rounded-xl opacity-50" />
+                  <div className="absolute inset-2 bg-gradient-to-br from-blue-500/5 to-transparent rounded-lg opacity-30" />
+
+                  <CardContent className="p-10 relative z-10">
+                    <div className="flex items-center gap-5 mb-8">
+                      <motion.div
+                        className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-500 rounded-2xl flex items-center justify-center border border-blue-400/30 shadow-2xl relative"
+                        animate={{
+                          boxShadow: [
+                            "0 0 20px rgba(59, 130, 246, 0.3)",
+                            "0 0 30px rgba(147, 51, 234, 0.4)",
+                            "0 0 20px rgba(59, 130, 246, 0.3)"
+                          ]
+                        }}
+                        transition={{
+                          duration: 3,
+                          repeat: Infinity,
+                          ease: "easeInOut",
+                          delay: 1
+                        }}
+                        whileHover={{ scale: 1.1, rotateY: 15 }}
+                      >
+                        {/* 3D highlight */}
+                        <div className="absolute inset-2 bg-gradient-to-br from-white/30 to-transparent rounded-xl" />
+                        <Lightbulb className="w-8 h-8 text-white relative z-10" />
+                      </motion.div>
+                      <h3 className="text-3xl font-black text-white bg-gradient-to-r from-white to-blue-200 bg-clip-text text-transparent">
+                        The Solution
+                      </h3>
                     </div>
-                    <p className="text-gray-300 leading-relaxed font-light text-lg">
+                    <p className="text-white leading-relaxed font-medium text-lg tracking-wide">
                       {project.solution}
                     </p>
+
+                    {/* Premium shine effect */}
+                    <motion.div
+                      className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent w-32 -translate-x-full"
+                      animate={{
+                        translateX: ['0%', '200%']
+                      }}
+                      transition={{
+                        duration: 2.5,
+                        ease: 'easeInOut',
+                        repeat: Infinity,
+                        repeatDelay: 6,
+                        delay: 2
+                      }}
+                    />
+
+                    {/* Corner accents */}
+                    <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-bl from-blue-400/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                    <div className="absolute bottom-0 left-0 w-20 h-20 bg-gradient-to-tr from-blue-400/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   </CardContent>
                 </Card>
               </motion.div>
 
+              {/* The Results Card */}
               <motion.div
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 40 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.6 }}
+                transition={{ delay: 0.6, duration: 0.6 }}
+                whileHover={{ y: -12, scale: 1.02 }}
+                className="group"
               >
-                <Card className="h-full bg-gradient-to-br from-green-900/20 to-emerald-900/20 border border-green-500/20 backdrop-blur-xl overflow-hidden group">
-                  <CardContent className="p-8">
-                    <div className="flex items-center gap-4 mb-6">
-                      <div className="w-12 h-12 bg-green-500/20 rounded-xl flex items-center justify-center border border-green-500/30">
-                        <TrendingUp className="w-6 h-6 text-green-400" />
-                      </div>
-                      <h3 className="text-2xl font-bold text-white">The Results</h3>
+                <Card className="h-full bg-black/50 backdrop-blur-xl border border-white/20 hover:border-green-400/40 transition-all duration-500 relative overflow-hidden">
+                  {/* Premium 3D gradient border animation */}
+                  <motion.div
+                    className="absolute inset-0 bg-gradient-to-r from-green-600 via-emerald-600 to-green-600 opacity-0 group-hover:opacity-25 blur-xl transition-opacity duration-500"
+                  />
+
+                  {/* 3D depth layers */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  <div className="absolute inset-1 bg-gradient-to-br from-green-500/10 to-transparent rounded-xl opacity-50" />
+                  <div className="absolute inset-2 bg-gradient-to-br from-green-500/5 to-transparent rounded-lg opacity-30" />
+
+                  <CardContent className="p-10 relative z-10">
+                    <div className="flex items-center gap-5 mb-8">
+                      <motion.div
+                        className="w-16 h-16 bg-gradient-to-br from-green-500 to-emerald-500 rounded-2xl flex items-center justify-center border border-green-400/30 shadow-2xl relative"
+                        animate={{
+                          boxShadow: [
+                            "0 0 20px rgba(34, 197, 94, 0.3)",
+                            "0 0 30px rgba(16, 185, 129, 0.4)",
+                            "0 0 20px rgba(34, 197, 94, 0.3)"
+                          ]
+                        }}
+                        transition={{
+                          duration: 3,
+                          repeat: Infinity,
+                          ease: "easeInOut",
+                          delay: 2
+                        }}
+                        whileHover={{ scale: 1.1, rotateY: 15 }}
+                      >
+                        {/* 3D highlight */}
+                        <div className="absolute inset-2 bg-gradient-to-br from-white/30 to-transparent rounded-xl" />
+                        <TrendingUp className="w-8 h-8 text-white relative z-10" />
+                      </motion.div>
+                      <h3 className="text-3xl font-black text-white bg-gradient-to-r from-white to-green-200 bg-clip-text text-transparent">
+                        The Results
+                      </h3>
                     </div>
-                    <div className="space-y-3">
+                    <div className="space-y-4">
                       {project.results.slice(0, 4).map((result, index) => (
-                        <div key={index} className="flex items-start gap-3">
-                          <CheckCircle className="w-5 h-5 text-green-400 mt-0.5 flex-shrink-0" />
-                          <p className="text-gray-300 text-sm font-light leading-relaxed">{result}</p>
-                        </div>
+                        <motion.div
+                          key={index}
+                          className="flex items-start gap-4"
+                          initial={{ opacity: 0, x: -20 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ delay: 0.8 + index * 0.1 }}
+                        >
+                          <motion.div
+                            whileHover={{ scale: 1.2 }}
+                            transition={{ duration: 0.2 }}
+                          >
+                            <CheckCircle className="w-6 h-6 text-green-400 mt-1 flex-shrink-0 drop-shadow-[0_0_8px_rgba(34,197,94,0.5)]" />
+                          </motion.div>
+                          <span className="text-white font-medium text-lg leading-relaxed tracking-wide">{result}</span>
+                        </motion.div>
                       ))}
                     </div>
+
+                    {/* Premium shine effect */}
+                    <motion.div
+                      className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent w-32 -translate-x-full"
+                      animate={{
+                        translateX: ['0%', '200%']
+                      }}
+                      transition={{
+                        duration: 2.5,
+                        ease: 'easeInOut',
+                        repeat: Infinity,
+                        repeatDelay: 6,
+                        delay: 4
+                      }}
+                    />
+
+                    {/* Corner accents */}
+                    <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-bl from-green-400/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                    <div className="absolute bottom-0 left-0 w-20 h-20 bg-gradient-to-tr from-green-400/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   </CardContent>
                 </Card>
               </motion.div>
@@ -478,9 +643,9 @@ export function CaseStudy({ project, onClose }: CaseStudyProps) {
                     transition={{ delay: 1.3 + index * 0.05 }}
                     whileHover={{ scale: 1.05, y: -2 }}
                   >
-                    <Badge 
-                      variant="secondary" 
-                      className="w-full justify-center bg-white/10 text-white border-white/20 hover:bg-white/20 transition-all duration-300 px-4 py-3 text-base font-medium rounded-xl"
+                    <Badge
+                      variant="secondary"
+                      className="w-full justify-center bg-black/60 text-white border-white/30 hover:bg-black/80 transition-all duration-300 px-4 py-3 text-base font-medium rounded-xl"
                     >
                       {tech}
                     </Badge>
@@ -496,24 +661,24 @@ export function CaseStudy({ project, onClose }: CaseStudyProps) {
               transition={{ delay: 1.4 }}
               className="text-center"
             >
-              <Card className="bg-gradient-to-br from-purple-900/30 to-pink-900/30 border border-purple-500/20 backdrop-blur-xl">
+              <Card className="bg-gradient-to-br from-purple-900/60 to-pink-900/60 border border-purple-500/40 backdrop-blur-xl">
                 <CardContent className="p-16">
                   <h3 className="text-4xl font-bold text-white mb-6">Ready for Similar Results?</h3>
-                  <p className="text-2xl text-gray-300 mb-12 font-light leading-relaxed max-w-3xl mx-auto">
+                  <p className="text-2xl text-white mb-12 font-light leading-relaxed max-w-3xl mx-auto">
                     Let's discuss how I can help transform your business with intelligent technology solutions that deliver real, measurable impact.
                   </p>
                   <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                    <Button 
+                    <Button
                       size="lg"
                       className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white px-10 py-5 rounded-full text-xl font-bold border-0 shadow-2xl"
                     >
                       <Eye className="w-6 h-6 mr-3" />
                       Start Your Project
                     </Button>
-                    <Button 
+                    <Button
                       variant="outline"
                       size="lg"
-                      className="border-white/20 text-white hover:bg-white/10 px-10 py-5 rounded-full text-xl font-medium backdrop-blur-sm"
+                      className="border-white/30 text-white hover:bg-white/20 px-10 py-5 rounded-full text-xl font-medium backdrop-blur-sm"
                     >
                       <Download className="w-6 h-6 mr-3" />
                       Download Case Study

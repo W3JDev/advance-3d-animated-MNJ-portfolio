@@ -109,6 +109,53 @@ interface StaticDataProviderProps {
 const STATIC_DATA = {
   projects: [
     {
+      id: 'flaire-ai',
+      title: 'FlareAi - AI Restaurant Trainer',
+      description: 'Production-ready enterprise SaaS platform for modern hospitality training with AI-powered multilingual support and real-time voice interactions.',
+      longDescription: 'FlareAi is a comprehensive AI-driven staff training platform designed specifically for the hospitality industry. It leverages Google Gemini Live API for voice interactions, supports 9+ languages with cultural context, and provides scenario-based learning with 127+ realistic hospitality scenarios. The platform is 90% production-ready with full-stack architecture, multi-tenant SaaS capabilities, and enterprise-grade security.',
+      challenge: 'The hospitality industry faces critical challenges with 73% of operators citing staffing as their top challenge, $4,200 average new hire ramp-up costs, 68% of customers reporting inconsistent service quality, and 42% of staff requiring multilingual language support.',
+      solution: 'Built a production-ready AI platform that transforms hospitality training through intelligent voice interactions, multilingual support, scenario-based learning, and real-time coaching. The system uses Google Gemini AI for natural conversations and provides personalized learning paths based on performance.',
+      results: [
+        'Reduced onboarding speed by 73% (from 14 days to 3.7 days)',
+        'Increased scenario coverage by 605% (127+ vs 18 industry standard)',
+        'Expanded language support by 350% (9 core languages vs 2)',
+        'Improved compliance certification by 35% (92% vs 68% pass rate)',
+        'Achieved 90% production readiness with enterprise architecture'
+      ],
+      tech: ['React 19', 'Node.js 20', 'TypeScript 5.4', 'PostgreSQL', 'Supabase', 'Google Gemini AI', 'Docker', 'Google Cloud Run', 'Vite', 'Express.js'],
+      category: 'AI/SaaS/Enterprise',
+      year: '2024',
+      duration: '12 months',
+      teamSize: 'Solo Developer',
+      gradient: 'from-purple-600 via-pink-600 to-red-600',
+      stats: [
+        { metric: 'Production Ready', value: '90%' },
+        { metric: 'Languages Supported', value: '9+' },
+        { metric: 'Training Scenarios', value: '127+' },
+        { metric: 'Onboarding Speed', value: '73% faster' }
+      ],
+      features: [
+        'AI-powered voice interactions with Google Gemini Live API',
+        'Multi-tenant SaaS architecture with data isolation',
+        'Multilingual support (English, Bahasa Malaysia, Chinese, Myanmar, Tamil, Bengali, Arabic, Spanish)',
+        'Scenario-based learning with 127+ hospitality scenarios',
+        'Real-time performance tracking and analytics',
+        'Enterprise-grade security with JWT authentication',
+        'Auto-scaling cloud deployment on Google Cloud Run',
+        'Comprehensive testing with 70%+ coverage',
+        'CI/CD pipeline with automated deployment',
+        'White-label ready with custom branding'
+      ],
+      impact: {
+        business: 'Revolutionizing hospitality training across the industry with measurable ROI and enterprise-ready scalability',
+        technical: 'Production-ready platform processing real-time AI interactions with 99.9% uptime and enterprise security',
+        user: 'Transforming staff training experience with personalized AI coaching and multilingual support'
+      },
+      githubUrl: 'https://github.com/W3JDev/FlairAi',
+      liveUrl: 'https://flareai-a-restaurant-trainer-ai-339008138670.us-west1.run.app/',
+      featured: true
+    },
+    {
       id: 'project-1',
       title: 'GuestAi - AI Guest Management',
       description: 'Intelligent AI-powered guest management system that revolutionizes hospitality operations with predictive analytics and automated guest services.',

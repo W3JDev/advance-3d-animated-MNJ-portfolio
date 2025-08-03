@@ -14,7 +14,7 @@ export function Navigation({ onContactClick }: NavigationProps) {
         <Button
           onClick={onContactClick}
           size="sm"
-          className="glass-effect hover:bg-white/20 text-white border-white/20"
+          className="bg-black/50 backdrop-blur-sm hover:bg-black/70 text-white border-white/30"
         >
           <MessageSquare className="w-4 h-4 mr-2" />
           Contact

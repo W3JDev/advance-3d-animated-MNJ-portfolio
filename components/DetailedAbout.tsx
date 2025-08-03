@@ -118,12 +118,12 @@ export function DetailedAbout() {
             className="space-y-8"
           >
             {/* Quote */}
-            <Card className="bg-gradient-to-br from-purple-900/20 to-pink-900/20 border border-purple-500/20 backdrop-blur-xl relative overflow-hidden">
+            <Card className="bg-gradient-to-br from-purple-900/60 to-pink-900/60 border border-purple-500/40 backdrop-blur-xl relative overflow-hidden">
               <CardContent className="p-8">
                 <Quote className="w-8 h-8 text-purple-400 mb-4 opacity-60" />
-                <blockquote className="text-xl text-gray-200 font-light leading-relaxed italic">
-                  "I don't just write code—I craft experiences. Every algorithm I create, 
-                  every system I architect, is born from understanding real human needs 
+                <blockquote className="text-xl text-white font-light leading-relaxed italic">
+                  "I don't just write code—I craft experiences. Every algorithm I create,
+                  every system I architect, is born from understanding real human needs
                   through years of hands-on service."
                 </blockquote>
                 <div className="mt-6 flex items-center gap-3">
@@ -132,7 +132,7 @@ export function DetailedAbout() {
                   </div>
                   <div>
                     <div className="text-white font-semibold">Jewel</div>
-                    <div className="text-gray-400 text-sm">Full-Stack AI Architect</div>
+                    <div className="text-gray-300 text-sm">Full-Stack AI Architect</div>
                   </div>
                 </div>
               </CardContent>
@@ -241,7 +241,7 @@ export function DetailedAbout() {
                     transition={{ delay: index * 0.1 }}
                     viewport={{ once: true }}
                   >
-                    <Card className="bg-white/5 backdrop-blur-sm border border-white/10 hover:border-white/20 transition-all duration-300 group">
+                    <Card className="bg-black/50 backdrop-blur-sm border border-white/20 hover:border-white/30 transition-all duration-300 group">
                       <CardContent className="p-4">
                         <div className="flex items-center gap-4">
                           <div className={`w-12 h-12 rounded-xl bg-gradient-to-r ${highlight.gradient} flex items-center justify-center text-white group-hover:scale-105 transition-transform`}>
@@ -249,7 +249,7 @@ export function DetailedAbout() {
                           </div>
                           <div className="flex-1">
                             <h4 className="text-white font-semibold mb-1">{highlight.title}</h4>
-                            <p className="text-gray-400 text-sm font-light">{highlight.description}</p>
+                            <p className="text-gray-300 text-sm font-light">{highlight.description}</p>
                           </div>
                         </div>
                       </CardContent>
