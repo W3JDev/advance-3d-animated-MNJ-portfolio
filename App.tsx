@@ -17,6 +17,10 @@ import { SafeMagneticButton } from './components/SafeMagneticButton';
 import { OptimizedStarfield } from './components/OptimizedStarfield';
 import { OptimizedHeroSection } from './components/OptimizedHeroSection';
 
+// Marketing-optimized components
+import { MarketingOptimizedHero } from './components/MarketingOptimizedHero';
+import { TrustBuildingSection, ProcessTransparencySection, UrgencySection } from './components/ConversionOptimizedSections';
+
 // Performance and accessibility components
 import { PerformanceProvider, OptimizedMotion } from './components/PerformanceOptimizer';
 import { SmartPreloader, LazyWrapper } from './components/ProgressiveLoader';
@@ -102,14 +106,13 @@ function AppContent() {
         />
       )}
 
-      {/* Hero Section */}
-      <motion.section 
+      {/* Marketing-Optimized Hero Section */}
+      <motion.section
         ref={heroRef}
-        className="relative min-h-screen overflow-hidden"
+        className="relative"
         style={{ y: y1 }}
       >
-        <OptimizedStarfield />
-        <OptimizedHeroSection />
+        <MarketingOptimizedHero />
       </motion.section>
 
       {/* Running Text */}
@@ -122,6 +125,10 @@ function AppContent() {
           speed={100}
         />
       </motion.div>
+
+      {/* Conversion-Optimized Sections */}
+      <TrustBuildingSection />
+      <ProcessTransparencySection />
 
       {/* Main Sections */}
       <IntroductionSection settings={settings} />
@@ -178,6 +185,9 @@ function AppContent() {
           </motion.div>
         </PremiumContainer>
       </section>
+
+      {/* Urgency & Scarcity Section */}
+      <UrgencySection />
 
       <ContactSection settings={settings} onContactClick={handleContactClick} />
       <FooterSection settings={settings} />
