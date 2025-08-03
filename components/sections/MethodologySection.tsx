@@ -42,7 +42,7 @@ export function MethodologySection() {
             >
               {/* Premium 3D Card Container */}
               <motion.div
-                className="h-full bg-black/40 backdrop-blur-xl border border-white/10 hover:border-white/30 transition-all duration-500 relative overflow-hidden rounded-3xl min-h-[420px] flex flex-col"
+                className="h-full bg-black/60 backdrop-blur-xl border border-white/20 hover:border-white/40 transition-all duration-500 relative overflow-hidden rounded-3xl min-h-[420px] flex flex-col shadow-2xl"
                 whileHover={{ y: -12, scale: 1.02 }}
                 transition={{ duration: 0.3 }}
               >
@@ -112,7 +112,7 @@ export function MethodologySection() {
                   </h3>
 
                   {/* Premium description */}
-                  <p className="text-gray-200 mb-6 leading-relaxed flex-1 font-medium">
+                  <p className="text-gray-100 mb-6 leading-relaxed flex-1 font-medium drop-shadow-md">
                     {step.description}
                   </p>
 
@@ -123,7 +123,7 @@ export function MethodologySection() {
                     whileHover={{ height: "auto", opacity: 1 }}
                     transition={{ duration: 0.4, ease: "easeOut" }}
                   >
-                    <p className="text-sm text-gray-300 leading-relaxed font-medium">
+                    <p className="text-sm text-gray-100 leading-relaxed font-medium drop-shadow-sm">
                       {step.details}
                     </p>
                   </motion.div>

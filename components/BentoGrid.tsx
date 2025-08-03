@@ -38,7 +38,7 @@ export function BentoGrid({ items }: BentoGridProps) {
           whileHover={{ scale: 1.02 }}
         >
           <Card className={`h-full bg-gradient-to-br ${item.gradient} border-0 overflow-hidden group cursor-pointer relative`}>
-            <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-all duration-300" />
+            <div className="absolute inset-0 bg-black/50 group-hover:bg-black/30 transition-all duration-300" />
             <div className="relative p-6 h-full flex flex-col justify-between text-white">
               <div>
                 {item.icon && (

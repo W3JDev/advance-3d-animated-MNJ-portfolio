@@ -110,7 +110,7 @@ export const methodology = [
 export const animationConfig = {
   pageTransition: { duration: 0.6 },
   staggerDelay: 0.1,
-  viewportMargin: "-50px",
+  viewportMargin: "0px 0px -100px 0px", // Better visibility - trigger animations earlier
   scrollConfig: {
     stiffness: 100,
     damping: 30,

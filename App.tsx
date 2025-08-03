@@ -127,10 +127,8 @@ function AppContent() {
       </motion.div>
 
       {/* Conversion-Optimized Sections */}
-      <div className="mt-8">
-        <TrustBuildingSection />
-        <ProcessTransparencySection />
-      </div>
+      <TrustBuildingSection />
+      <ProcessTransparencySection />
 
       {/* Main Sections */}
       <IntroductionSection settings={settings} />
