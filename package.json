@@ -13,6 +13,9 @@
     "fresh-install": "rm -rf node_modules package-lock.json && npm install",
     "test": "vitest",
     "test:ui": "vitest --ui",
+    "deploy": "npm run build && echo 'Build complete! Ready for deployment.'",
+    "deploy:vercel": "vercel --prod",
+    "deploy:preview": "vercel"
     "test:coverage": "vitest --coverage"
   },
   "dependencies": {
