@@ -2,10 +2,10 @@
 function getEnvVar(key: string, fallback = ''): string {
   try {
     // Simple check for Vite environment variables
-    if (import.meta?.env?.[key]) {
-      return import.meta.env[key];
+    if (typeof window !== 'undefined' && (import.meta as any)?.env?.[key]) {
+      return (import.meta as any).env[key];
     }
-    
+
     // Fallback to provided default
     return fallback;
   } catch {
