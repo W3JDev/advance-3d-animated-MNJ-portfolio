@@ -16,7 +16,11 @@
     "deploy": "npm run build && echo 'Build complete! Ready for deployment.'",
     "deploy:vercel": "vercel --prod",
     "deploy:preview": "vercel",
-    "test:coverage": "vitest --coverage"
+    "test:coverage": "vitest --coverage",
+    "test:build": "npm run type-check && npm run build",
+    "test:full": "npm run lint && npm run type-check && npm run build",
+    "deploy:safe": "npm run test:full && echo '✅ Ready for production deployment!'",
+    "dev:safe": "npm run type-check && npm run dev"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",
