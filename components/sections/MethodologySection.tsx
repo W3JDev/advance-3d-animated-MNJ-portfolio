@@ -9,7 +9,7 @@ import { methodology, animationConfig } from '../../constants/portfolioConstants
 
 export function MethodologySection() {
   return (
-    <section className="py-24 bg-gradient-to-b from-black via-gray-950/50 to-black relative overflow-hidden">
+    <section className="py-16 bg-gradient-to-b from-black via-gray-950/50 to-black relative overflow-hidden">
       <PremiumContainer>
         <motion.div 
           className="text-center mb-20"

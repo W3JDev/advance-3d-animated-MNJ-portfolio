@@ -11,7 +11,7 @@ export function RunningText({ text, direction = 'left', speed = 80, className = 
   const duplicatedText = Array(8).fill(text).join(' • '); // Fewer duplications for cleaner look
   
   return (
-    <div className={`overflow-hidden whitespace-nowrap relative ${className}`}>
+    <div className={`overflow-hidden whitespace-nowrap relative py-8 ${className}`}>
       {/* Refined background with subtle gradient */}
       <div className="absolute inset-0 bg-gradient-to-r from-black/20 via-white/5 to-black/20" />
       
@@ -27,7 +27,7 @@ export function RunningText({ text, direction = 'left', speed = 80, className = 
           ease: 'linear'
         }}
       >
-        <span className="inline-block pr-20 text-3xl md:text-4xl lg:text-5xl font-light tracking-[0.2em]">
+        <span className="inline-block pr-20 text-xl md:text-2xl lg:text-3xl font-light tracking-[0.2em]">
           <span 
             className="bg-gradient-to-r from-gray-300 via-white to-gray-300 bg-clip-text text-transparent"
             style={{

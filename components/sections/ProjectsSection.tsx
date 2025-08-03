@@ -17,7 +17,7 @@ interface ProjectsSectionProps {
 
 export function ProjectsSection({ projects, settings, onViewCaseStudy }: ProjectsSectionProps) {
   return (
-    <section id="projects" className="py-24 bg-gradient-to-b from-purple-950/20 via-black to-blue-950/20">
+    <section id="projects" className="py-16 bg-gradient-to-b from-purple-950/20 via-black to-blue-950/20">
       <PremiumContainer>
         <OptimizedMotion
           className="text-center mb-20"

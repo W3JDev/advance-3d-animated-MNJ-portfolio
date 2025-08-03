@@ -36,7 +36,7 @@ export const TrustBuildingSection: React.FC = () => {
   ];
 
   return (
-    <section ref={ref} className="py-20 bg-gradient-to-br from-gray-900 to-black">
+    <section ref={ref} className="py-12 bg-gradient-to-br from-gray-900 to-black">
       <div className="container mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -135,7 +135,7 @@ export const ProcessTransparencySection: React.FC = () => {
   ];
 
   return (
-    <section ref={ref} className="py-20 bg-black">
+    <section ref={ref} className="py-12 bg-black">
       <div className="container mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 30 }}

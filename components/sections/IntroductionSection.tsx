@@ -14,7 +14,7 @@ export function IntroductionSection({ settings }: IntroductionSectionProps) {
   const bentoItems = createBentoItems(settings);
 
   return (
-    <section className="py-24 bg-gradient-to-b from-black via-gray-950/50 to-black transition-colors duration-1000">
+    <section className="py-16 bg-gradient-to-b from-black via-gray-950/50 to-black transition-colors duration-1000">
       <PremiumContainer>
         <motion.div 
           className="text-center mb-20"

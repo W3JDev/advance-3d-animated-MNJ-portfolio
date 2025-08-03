@@ -85,7 +85,7 @@ const skills: Skill[] = [
 
 export function SkillsShowcase() {
   return (
-    <section className="py-32 px-6 relative">
+    <section className="py-16 px-6 relative">
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
         <motion.div 

@@ -79,7 +79,7 @@ export const MarketingOptimizedHero: React.FC = () => {
       />
 
       {/* Premium Container with Proper Spacing */}
-      <div className="max-w-7xl mx-auto px-8 lg:px-16 relative z-10 py-8">
+      <div className="max-w-7xl mx-auto px-8 lg:px-16 relative z-10 py-8 pb-16">
         <div className="grid lg:grid-cols-2 gap-20 items-center min-h-[80vh]">
           {/* Left Column - Value Proposition */}
           <motion.div
