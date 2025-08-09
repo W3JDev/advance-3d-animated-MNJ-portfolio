@@ -41,7 +41,7 @@ export function ProjectShowcase({ project, index }: ProjectShowcaseProps) {
       }}
       className="group perspective-1000 h-full"
     >
-      <div className="relative bg-black/40 backdrop-blur-xl rounded-3xl overflow-hidden border border-white/10 h-full transform-gpu">
+      <div className="relative bg-black/60 backdrop-blur-xl rounded-3xl overflow-hidden border border-white/20 h-full transform-gpu shadow-2xl">
         {/* Animated gradient border */}
         <motion.div
           className={`absolute inset-0 bg-gradient-to-r ${project.gradient} opacity-50 blur-xl`}
@@ -71,8 +71,8 @@ export function ProjectShowcase({ project, index }: ProjectShowcaseProps) {
               {project.title}
             </motion.h3>
             
-            <motion.p 
-              className="text-gray-300 leading-relaxed"
+            <motion.p
+              className="text-gray-100 leading-relaxed drop-shadow-md"
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.4 }}
@@ -96,9 +96,9 @@ export function ProjectShowcase({ project, index }: ProjectShowcaseProps) {
                 transition={{ delay: 0.6 + techIndex * 0.1 }}
                 whileHover={{ scale: 1.05 }}
               >
-                <Badge 
-                  variant="secondary" 
-                  className="bg-white/10 text-gray-200 border border-white/20 hover:bg-white/20 transition-all duration-300"
+                <Badge
+                  variant="secondary"
+                  className="bg-white/15 text-gray-100 border border-white/30 hover:bg-white/25 transition-all duration-300 shadow-md"
                 >
                   {tech}
                 </Badge>
@@ -109,7 +109,7 @@ export function ProjectShowcase({ project, index }: ProjectShowcaseProps) {
           {/* Project stats */}
           {project.stats && (
             <motion.div 
-              className="grid grid-cols-3 gap-4 mb-6 p-4 bg-white/5 rounded-xl border border-white/10"
+              className="grid grid-cols-3 gap-4 mb-6 p-4 bg-white/10 rounded-xl border border-white/20 shadow-lg backdrop-blur-sm"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.7 }}
@@ -117,19 +117,19 @@ export function ProjectShowcase({ project, index }: ProjectShowcaseProps) {
               {project.stats.users && (
                 <div className="text-center">
                   <div className="text-lg font-bold text-white">{project.stats.users}</div>
-                  <div className="text-xs text-gray-400">Users</div>
+                  <div className="text-xs text-gray-200 drop-shadow-sm">Users</div>
                 </div>
               )}
               {project.stats.performance && (
                 <div className="text-center">
                   <div className="text-lg font-bold text-white">{project.stats.performance}</div>
-                  <div className="text-xs text-gray-400">Performance</div>
+                  <div className="text-xs text-gray-200 drop-shadow-sm">Performance</div>
                 </div>
               )}
               {project.stats.impact && (
                 <div className="text-center">
                   <div className="text-lg font-bold text-white">{project.stats.impact}</div>
-                  <div className="text-xs text-gray-400">Impact</div>
+                  <div className="text-xs text-gray-200 drop-shadow-sm">Impact</div>
                 </div>
               )}
             </motion.div>
@@ -153,7 +153,7 @@ export function ProjectShowcase({ project, index }: ProjectShowcaseProps) {
             <Button 
               variant="outline" 
               size="sm"
-              className="border-white/20 text-gray-300 hover:bg-white/10 hover:text-white transition-all duration-300 transform hover:scale-105"
+              className="border-white/30 text-gray-200 hover:bg-white/15 hover:text-white transition-all duration-300 transform hover:scale-105 shadow-md"
             >
               <Github className="w-4 h-4" />
             </Button>

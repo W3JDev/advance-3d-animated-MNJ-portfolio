@@ -36,13 +36,13 @@ export function InteractiveFAQ({ faqs }: InteractiveFAQProps) {
           transition={{ duration: 0.5, delay: index * 0.1 }}
           viewport={{ once: true }}
         >
-          <Card className="overflow-hidden border border-white/10 bg-white/5 backdrop-blur-sm hover:bg-white/10 transition-all duration-300">
+          <Card className="overflow-hidden border border-white/20 bg-white/10 backdrop-blur-md hover:bg-white/15 transition-all duration-300 shadow-xl">
             <motion.button
               className="w-full p-6 text-left flex items-center justify-between group"
               onClick={() => toggleItem(faq.id)}
               whileHover={{ backgroundColor: 'rgba(255, 255, 255, 0.05)' }}
             >
-              <h3 className="text-lg font-semibold text-white group-hover:text-gray-200 transition-colors">
+              <h3 className="text-lg font-semibold text-white group-hover:text-gray-100 transition-colors drop-shadow-md">
                 {faq.question}
               </h3>
               <motion.div
@@ -69,7 +69,7 @@ export function InteractiveFAQ({ faqs }: InteractiveFAQProps) {
                 >
                   <div className="px-6 pb-6">
                     <div className="w-full h-px bg-gradient-to-r from-transparent via-white/20 to-transparent mb-4" />
-                    <p className="text-gray-300 leading-relaxed">
+                    <p className="text-gray-100 leading-relaxed drop-shadow-sm">
                       {faq.answer}
                     </p>
                   </div>

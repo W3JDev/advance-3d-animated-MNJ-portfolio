@@ -67,8 +67,8 @@ export function PremiumText({ children, size = 'base', color = 'primary', classN
 
   const colorClasses = {
     primary: 'text-white',
-    secondary: 'text-gray-300',
-    muted: 'text-gray-400',
+    secondary: 'text-gray-200',
+    muted: 'text-gray-300',
     white: 'text-white'
   };
 

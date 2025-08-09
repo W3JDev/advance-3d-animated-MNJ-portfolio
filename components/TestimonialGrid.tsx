@@ -29,7 +29,7 @@ export function TestimonialGrid({ testimonials }: TestimonialGridProps) {
           whileHover={{ y: -12, scale: 1.02 }}
           className="h-full group"
         >
-          <Card className="h-full bg-black/40 backdrop-blur-xl border border-white/10 hover:border-white/30 transition-all duration-500 relative overflow-hidden">
+          <Card className="h-full bg-black/60 backdrop-blur-xl border border-white/20 hover:border-white/40 transition-all duration-500 relative overflow-hidden shadow-2xl">
             {/* Premium 3D gradient border animation */}
             <motion.div
               className="absolute inset-0 bg-gradient-to-r from-purple-600 via-pink-600 to-orange-600 opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-500"
@@ -72,7 +72,7 @@ export function TestimonialGrid({ testimonials }: TestimonialGridProps) {
                       className={`w-5 h-5 ${
                         i < testimonial.rating
                           ? 'text-yellow-400 fill-yellow-400 drop-shadow-[0_0_8px_rgba(251,191,36,0.5)]'
-                          : 'text-gray-600'
+                          : 'text-gray-500'
                       }`}
                     />
                   </motion.div>
@@ -80,9 +80,9 @@ export function TestimonialGrid({ testimonials }: TestimonialGridProps) {
               </div>
 
               {/* Premium content with better typography */}
-              <blockquote className="text-white leading-relaxed mb-8 flex-1 text-lg font-medium">
+              <blockquote className="text-white leading-relaxed mb-8 flex-1 text-lg font-medium drop-shadow-md">
                 <span className="text-white/80">"</span>
-                <span className="text-gray-100">{testimonial.content}</span>
+                <span className="text-gray-50">{testimonial.content}</span>
                 <span className="text-white/80">"</span>
               </blockquote>
 
@@ -109,9 +109,9 @@ export function TestimonialGrid({ testimonials }: TestimonialGridProps) {
                   <span className="relative z-10">{testimonial.name.charAt(0)}</span>
                 </motion.div>
                 <div>
-                  <div className="text-white font-bold text-lg">{testimonial.name}</div>
-                  <div className="text-gray-300 text-sm font-medium">
-                    {testimonial.role} at <span className="text-purple-300">{testimonial.company}</span>
+                  <div className="text-white font-bold text-lg drop-shadow-md">{testimonial.name}</div>
+                  <div className="text-gray-200 text-sm font-medium drop-shadow-sm">
+                    {testimonial.role} at <span className="text-purple-200">{testimonial.company}</span>
                   </div>
                 </div>
               </div>

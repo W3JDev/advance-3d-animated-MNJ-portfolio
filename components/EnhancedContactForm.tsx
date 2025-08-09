@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Send, CheckCircle, AlertCircle, Loader2 } from 'lucide-react';
 import { Button } from './ui/button';
+import { useContactForm } from './StaticDataProvider';
 
 interface FormData {
   name: string;
@@ -14,6 +15,7 @@ interface FormData {
 }
 
 export const EnhancedContactForm: React.FC = () => {
+  const { submitInquiry, loading } = useContactForm();
   const [formData, setFormData] = useState<FormData>({
     name: '',
     email: '',
@@ -23,7 +25,7 @@ export const EnhancedContactForm: React.FC = () => {
     timeline: '',
     message: ''
   });
-  
+
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const [currentStep, setCurrentStep] = useState(1);
 
@@ -49,15 +51,19 @@ export const EnhancedContactForm: React.FC = () => {
     setStatus('loading');
 
     try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
+      const submissionData = {
+        name: formData.name,
+        email: formData.email,
+        subject: `${formData.projectType} Project Inquiry`,
+        message: formData.message,
+        projectType: formData.projectType,
+        budget: formData.budget,
+        timeline: formData.timeline,
+      };
 
-      if (response.ok) {
+      const result = await submitInquiry(submissionData);
+
+      if (result.success) {
         setStatus('success');
         // Reset form after 3 seconds
         setTimeout(() => {
@@ -77,6 +83,7 @@ export const EnhancedContactForm: React.FC = () => {
         setStatus('error');
       }
     } catch (error) {
+      console.error('Contact form error:', error);
       setStatus('error');
     }
   };
@@ -271,10 +278,10 @@ export const EnhancedContactForm: React.FC = () => {
             </Button>
             <Button
               type="submit"
-              disabled={status === 'loading' || !formData.message}
+              disabled={loading || status === 'loading' || !formData.message}
               className="flex-1 bg-green-500 hover:bg-green-600"
             >
-              {status === 'loading' ? (
+              {(loading || status === 'loading') ? (
                 <>
                   <Loader2 className="w-4 h-4 mr-2 animate-spin" />
                   Sending...

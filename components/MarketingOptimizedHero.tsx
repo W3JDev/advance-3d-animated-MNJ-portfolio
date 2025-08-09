@@ -78,14 +78,16 @@ export const MarketingOptimizedHero: React.FC = () => {
         transition={{ type: "spring", damping: 30, stiffness: 200 }}
       />
 
-      <div className="container mx-auto px-6 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+      {/* Premium Container with Proper Spacing */}
+      <div className="max-w-7xl mx-auto px-8 lg:px-16 relative z-10 py-8 pb-16">
+        <div className="grid lg:grid-cols-2 gap-20 items-center min-h-[80vh]">
           {/* Left Column - Value Proposition */}
           <motion.div
             style={{ y: textY }}
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
+            className="lg:pr-8"
           >
             {/* Authority Badge - Social Proof */}
             <motion.div
@@ -111,7 +113,7 @@ export const MarketingOptimizedHero: React.FC = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
-              className="text-5xl md:text-7xl font-black text-white mb-6 leading-tight"
+              className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-4 leading-tight"
             >
               Transform Your
               <span className="bg-gradient-to-r from-blue-400 via-purple-500 to-cyan-400 bg-clip-text text-transparent block">
@@ -132,7 +134,7 @@ export const MarketingOptimizedHero: React.FC = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
-                className="text-2xl text-gray-300 font-light"
+                className="text-lg md:text-xl text-gray-300 font-light"
               >
                 {roles[currentRole]}
               </motion.p>
@@ -227,7 +229,7 @@ export const MarketingOptimizedHero: React.FC = () => {
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="relative"
+            className="relative lg:pl-8"
           >
             {/* 3D Floating Card - Portfolio Preview */}
             <motion.div
@@ -250,9 +252,9 @@ export const MarketingOptimizedHero: React.FC = () => {
 
                 {/* Animated Metrics */}
                 {[
-                  { label: "Order Accuracy", value: 95, color: "blue-400" },
-                  { label: "Training Time Reduction", value: 70, color: "green-400" },
-                  { label: "Customer Satisfaction", value: 98, color: "purple-400" }
+                  { label: "Order Accuracy", value: 95, color: "bg-yellow-400" },
+                  { label: "Training Time Reduction", value: 70, color: "bg-green-400" },
+                  { label: "Customer Satisfaction", value: 98, color: "bg-purple-400" }
                 ].map((metric, index) => (
                   <motion.div
                     key={metric.label}
@@ -267,7 +269,7 @@ export const MarketingOptimizedHero: React.FC = () => {
                     </div>
                     <div className="w-full bg-gray-700 rounded-full h-2">
                       <motion.div
-                        className={`h-2 rounded-full bg-${metric.color}`}
+                        className={`h-2 rounded-full ${metric.color}`}
                         initial={{ width: 0 }}
                         animate={{ width: `${metric.value}%` }}
                         transition={{ duration: 1.5, delay: 1 + index * 0.2 }}
