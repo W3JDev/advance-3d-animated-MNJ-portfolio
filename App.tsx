@@ -1,41 +1,38 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { motion, useScroll, useSpring, useTransform } from 'framer-motion';
-import { RunningText } from './components/RunningText';
-import { InteractiveFAQ } from './components/InteractiveFAQ';
-import { LuxuryBackground } from './components/LuxuryBackground';
-import { SkillsShowcase } from './components/SkillsShowcase';
-import { DetailedAbout } from './components/DetailedAbout';
-import { CaseStudy } from './components/CaseStudy';
+import React, { useState, useEffect, useRef, Suspense, useMemo, useCallback } from 'react';
+import { MotionProvider, useMotion } from './components/MotionProvider';
 import { PremiumHeading, PremiumText, PremiumContainer } from './components/PremiumTypography';
 import { PremiumButton } from './components/PremiumButton';
-import { ContactForm } from './components/ContactForm';
 import { StaticDataProvider, usePortfolioData } from './components/StaticDataProvider';
-import { Navigation } from './components/Navigation';
-import { SafeMagneticButton } from './components/SafeMagneticButton';
-
-// Optimized hero components
-import { OptimizedStarfield } from './components/OptimizedStarfield';
-import { OptimizedHeroSection } from './components/OptimizedHeroSection';
-
-// Marketing-optimized components
-import { MarketingOptimizedHero } from './components/MarketingOptimizedHero';
-import { TrustBuildingSection, ProcessTransparencySection, UrgencySection } from './components/ConversionOptimizedSections';
-
-// Performance and accessibility components
-import { PerformanceProvider, OptimizedMotion } from './components/PerformanceOptimizer';
-import { SmartPreloader, LazyWrapper } from './components/ProgressiveLoader';
+import { PerformanceProvider } from './components/PerformanceOptimizer';
+import { SmartPreloader } from './components/ProgressiveLoader';
 import { AccessibilityProvider, SkipToContent } from './components/AccessibilityEnhancements';
-
-// Section components
-import { IntroductionSection } from './components/sections/IntroductionSection';
-import { MethodologySection } from './components/sections/MethodologySection';
-import { ProjectsSection } from './components/sections/ProjectsSection';
-import { TestimonialsSection } from './components/sections/TestimonialsSection';
-import { ContactSection } from './components/sections/ContactSection';
-import { FooterSection } from './components/sections/FooterSection';
-
-// Constants
 import { animationConfig, colorThemes } from './constants/portfolioConstants';
+
+// Lazy-loaded heavy / below-the-fold components (using named export mapping)
+const LuxuryBackground = React.lazy(() => import('./components/LuxuryBackground').then(m => ({ default: m.LuxuryBackground })));
+const RunningText = React.lazy(() => import('./components/RunningText').then(m => ({ default: m.RunningText })));
+const InteractiveFAQ = React.lazy(() => import('./components/InteractiveFAQ').then(m => ({ default: m.InteractiveFAQ })));
+const SkillsShowcase = React.lazy(() => import('./components/SkillsShowcase').then(m => ({ default: m.SkillsShowcase })));
+const DetailedAbout = React.lazy(() => import('./components/DetailedAbout').then(m => ({ default: m.DetailedAbout })));
+const CaseStudy = React.lazy(() => import('./components/CaseStudy').then(m => ({ default: m.CaseStudy })));
+const ContactForm = React.lazy(() => import('./components/ContactForm').then(m => ({ default: m.ContactForm })));
+const Navigation = React.lazy(() => import('./components/Navigation').then(m => ({ default: m.Navigation })));
+const SafeMagneticButton = React.lazy(() => import('./components/SafeMagneticButton').then(m => ({ default: m.SafeMagneticButton })));
+const MarketingOptimizedHero = React.lazy(() => import('./components/MarketingOptimizedHero').then(m => ({ default: m.MarketingOptimizedHero })));
+const TrustBuildingSection = React.lazy(() => import('./components/ConversionOptimizedSections').then(m => ({ default: m.TrustBuildingSection })));
+const ProcessTransparencySection = React.lazy(() => import('./components/ConversionOptimizedSections').then(m => ({ default: m.ProcessTransparencySection })));
+const UrgencySection = React.lazy(() => import('./components/ConversionOptimizedSections').then(m => ({ default: m.UrgencySection })));
+const IntroductionSection = React.lazy(() => import('./components/sections/IntroductionSection').then(m => ({ default: m.IntroductionSection })));
+const MethodologySection = React.lazy(() => import('./components/sections/MethodologySection').then(m => ({ default: m.MethodologySection })));
+const ProjectsSection = React.lazy(() => import('./components/sections/ProjectsSection').then(m => ({ default: m.ProjectsSection })));
+const TestimonialsSection = React.lazy(() => import('./components/sections/TestimonialsSection').then(m => ({ default: m.TestimonialsSection })));
+const ContactSection = React.lazy(() => import('./components/sections/ContactSection').then(m => ({ default: m.ContactSection })));
+const FooterSection = React.lazy(() => import('./components/sections/FooterSection').then(m => ({ default: m.FooterSection })));
+
+// Fallback components
+const FallbackBlock = ({ label, className = '' }: { label: string; className?: string }) => (
+  <div data-testid={`fallback-${label.toLowerCase().replace(/\s+/g,'-')}`} className={`animate-pulse text-xs tracking-wider uppercase text-white/40 ${className}`}>{label} Loading...</div>
+);
 
 // Utility functions
 function getRouteFromHash() {
@@ -45,29 +42,16 @@ function getRouteFromHash() {
 function AppContent() {
   const [selectedProject, setSelectedProject] = useState<any>(null);
   const [currentRoute, setCurrentRoute] = useState(getRouteFromHash());
-  const { scrollYProgress } = useScroll();
   const heroRef = useRef<HTMLElement>(null);
+  const { projects, testimonials, faqs, settings } = usePortfolioData();
   
-  // Get data from static context
-  const { projects, testimonials, faqs, settings, about } = usePortfolioData();
+  // Get motion context but don't destructure hooks yet
+  const motionContext = useMotion();
+  const { motion } = motionContext;
   
-  const smoothScrollProgress = useSpring(scrollYProgress, animationConfig.scrollConfig);
-
-  // Optimized parallax transforms
-  const y1 = useTransform(scrollYProgress, [0, 1], [0, -30]);
-  const y2 = useTransform(scrollYProgress, [0, 1], [0, -60]);
-  
-  // Color theme transitions
-  const backgroundColor = useTransform(
-    scrollYProgress,
-    [0, 0.25, 0.5, 0.75, 1],
-    colorThemes
-  );
-
-  // Event handlers
-  const handleContactClick = () => {
-    window.location.hash = '#contact';
-  };
+  const handleContactClick = useCallback(() => { 
+    window.location.hash = '#contact'; 
+  }, []);
 
   useEffect(() => {
     const handleHashChange = () => {
@@ -82,7 +66,9 @@ function AppContent() {
   if (currentRoute === 'contact') {
     return (
       <div className="min-h-screen bg-black text-white">
-        <ContactForm />
+        <Suspense fallback={<FallbackBlock label="Contact Form" />}>
+          <ContactForm />
+        </Suspense>
       </div>
     );
   }
@@ -90,61 +76,77 @@ function AppContent() {
   return (
     <motion.div 
       className="min-h-screen text-white overflow-x-hidden relative bg-black"
-      style={{ backgroundColor }}
     >
-      {/* Background Effects */}
-      <LuxuryBackground />
+      <Suspense fallback={<FallbackBlock label="Background" className="absolute inset-0 flex items-center justify-center" />}>
+        <LuxuryBackground />
+      </Suspense>
 
-      {/* Navigation */}
-      <Navigation onContactClick={handleContactClick} />
+      <Suspense fallback={<FallbackBlock label="Nav" />}>
+        <Navigation onContactClick={handleContactClick} />
+      </Suspense>
 
-      {/* Case Study Modal */}
-      {selectedProject && (
-        <CaseStudy 
-          project={selectedProject} 
-          onClose={() => setSelectedProject(null)} 
-        />
-      )}
+      <Suspense fallback={null}>
+        {selectedProject && (
+          <CaseStudy 
+            project={selectedProject} 
+            onClose={() => setSelectedProject(null)} 
+          />
+        )}
+      </Suspense>
 
-      {/* Marketing-Optimized Hero Section */}
       <motion.section
         ref={heroRef}
         className="relative"
-        style={{ y: y1 }}
       >
-        <MarketingOptimizedHero />
+        <Suspense fallback={<FallbackBlock label="Hero" />}>
+          <MarketingOptimizedHero />
+        </Suspense>
       </motion.section>
 
-      {/* Running Text */}
       <motion.div 
         className="border-y border-white/20 relative overflow-hidden bg-gradient-to-r from-purple-950/30 via-blue-950/30 to-purple-950/30"
-        style={{ y: y2 }}
       >
-        <RunningText 
-          text={`✦ ARTIFICIAL INTELLIGENCE ✦ BLOCKCHAIN REVOLUTION ✦ FULL-STACK MASTERY ✦ CREATIVE TECHNOLOGY ✦ ENTERPRISE SOLUTIONS ✦ NEURAL NETWORKS ✦ ${settings.roiImpact} ROI IMPACT ✦ ${settings.location} BASED ✦ ${settings.company}`}
-          speed={100}
-        />
+        <Suspense fallback={<FallbackBlock label="Running Text" />}>
+          <RunningText 
+            text={`✦ ARTIFICIAL INTELLIGENCE ✦ BLOCKCHAIN REVOLUTION ✦ FULL-STACK MASTERY ✦ CREATIVE TECHNOLOGY ✦ ENTERPRISE SOLUTIONS ✦ NEURAL NETWORKS ✦ ${settings.roiImpact} ROI IMPACT ✦ ${settings.location} BASED ✦ ${settings.company}`}
+            speed={100}
+          />
+        </Suspense>
       </motion.div>
 
-      {/* Conversion-Optimized Sections */}
-      <TrustBuildingSection />
-      <ProcessTransparencySection />
+      <Suspense fallback={<FallbackBlock label="Conversion Sections" />}>
+        <TrustBuildingSection />
+      </Suspense>
+      <Suspense fallback={<FallbackBlock label="Process" />}>
+        <ProcessTransparencySection />
+      </Suspense>
 
-      {/* Main Sections */}
-      <IntroductionSection settings={settings} />
-      <SkillsShowcase />
-      <MethodologySection />
-      <ProjectsSection 
-        projects={projects} 
-        settings={settings} 
-        onViewCaseStudy={setSelectedProject} 
-      />
-      <TestimonialsSection 
-        testimonials={testimonials} 
-        settings={settings} 
-        onContactClick={handleContactClick} 
-      />
-      <DetailedAbout />
+      <Suspense fallback={<FallbackBlock label="Introduction" />}>
+        <IntroductionSection settings={settings} />
+      </Suspense>
+      <Suspense fallback={<FallbackBlock label="Skills" />}>
+        <SkillsShowcase />
+      </Suspense>
+      <Suspense fallback={<FallbackBlock label="Methodology" />}>
+        <MethodologySection />
+      </Suspense>
+      <Suspense fallback={<FallbackBlock label="Projects" />}>
+        <ProjectsSection 
+          projects={projects} 
+          settings={settings} 
+          onViewCaseStudy={setSelectedProject} 
+        />
+      </Suspense>
+      <Suspense fallback={<FallbackBlock label="Testimonials" />}>
+        <TestimonialsSection 
+          testimonials={testimonials} 
+          settings={settings} 
+          onContactClick={handleContactClick} 
+        />
+      </Suspense>
+      <Suspense fallback={<FallbackBlock label="About" />}>
+        <DetailedAbout />
+      </Suspense>
 
       {/* FAQ Section */}
       <section className="py-24 bg-gradient-to-b from-black via-cyan-950/20 to-black">
@@ -164,7 +166,9 @@ function AppContent() {
             </PremiumText>
           </motion.div>
           
-          <InteractiveFAQ faqs={faqs} />
+          <Suspense fallback={<FallbackBlock label="FAQ" />}>
+            <InteractiveFAQ faqs={faqs} />
+          </Suspense>
 
           <motion.div
             className="text-center mt-16"
@@ -173,48 +177,49 @@ function AppContent() {
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true, margin: animationConfig.viewportMargin }}
           >
-            <SafeMagneticButton>
-              <PremiumButton 
-                size="lg" 
-                gradient="from-cyan-600 to-blue-600"
-                onClick={handleContactClick}
-              >
-                Still Have Questions?
-              </PremiumButton>
-            </SafeMagneticButton>
+            <Suspense fallback={<FallbackBlock label="Questions Button" />}>
+              <SafeMagneticButton>
+                <PremiumButton 
+                  size="lg" 
+                  gradient="from-cyan-600 to-blue-600"
+                  onClick={handleContactClick}
+                >
+                  Still Have Questions?
+                </PremiumButton>
+              </SafeMagneticButton>
+            </Suspense>
           </motion.div>
         </PremiumContainer>
       </section>
 
-      {/* Urgency & Scarcity Section */}
-      <UrgencySection />
+      <Suspense fallback={<FallbackBlock label="Urgency" />}> <UrgencySection /> </Suspense>
 
-      <ContactSection settings={settings} onContactClick={handleContactClick} />
-      <FooterSection settings={settings} />
+      <Suspense fallback={<FallbackBlock label="Contact Section" />}>
+        <ContactSection settings={settings} onContactClick={handleContactClick} />
+      </Suspense>
+      <Suspense fallback={<FallbackBlock label="Footer" />}>
+        <FooterSection settings={settings} />
+      </Suspense>
     </motion.div>
   );
 }
 
 export default function App() {
-  // Critical resources to preload
-  const criticalResources = [
-    // Add any critical fonts, images, or assets here
-    '/fonts/inter-var.woff2',
-    // Add other critical resources as needed
-  ];
-
+  // Remove font preload for now since files don't exist
+  const criticalResources: string[] = [];
   return (
     <AccessibilityProvider>
       <PerformanceProvider>
-        <SmartPreloader
-          resources={criticalResources}
-          onComplete={() => console.log('Critical resources loaded')}
-        >
-          <SkipToContent />
-          <StaticDataProvider>
-            <AppContent />
-          </StaticDataProvider>
-        </SmartPreloader>
+        <MotionProvider>
+          <SmartPreloader resources={criticalResources} onComplete={() => console.log('Critical resources loaded')}>
+            <SkipToContent />
+            <StaticDataProvider>
+              <Suspense fallback={<div className="text-white p-4" data-testid="app-loading">Initializing...</div>}>
+                <AppContent />
+              </Suspense>
+            </StaticDataProvider>
+          </SmartPreloader>
+        </MotionProvider>
       </PerformanceProvider>
     </AccessibilityProvider>
   );

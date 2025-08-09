@@ -191,12 +191,15 @@ interface PreloaderProps {
   resources: string[];
   onComplete?: () => void;
   children: React.ReactNode;
+  /** disable actual loading (for tests) */
+  disableLoading?: boolean;
 }
 
 export const SmartPreloader = memo(({ 
   resources, 
   onComplete, 
-  children 
+  children,
+  disableLoading = false
 }: PreloaderProps) => {
   const [loadedCount, setLoadedCount] = useState(0);
   const [isComplete, setIsComplete] = useState(false);
@@ -207,6 +210,11 @@ export const SmartPreloader = memo(({
   );
 
   useEffect(() => {
+    if (disableLoading) {
+      setIsComplete(true);
+      onComplete?.();
+      return;
+    }
     if (resources.length === 0) {
       setIsComplete(true);
       onComplete?.();
@@ -251,11 +259,11 @@ export const SmartPreloader = memo(({
     };
 
     loadAllResources();
-  }, [resources, onComplete]);
+  }, [resources, onComplete, disableLoading]);
 
   if (!isComplete) {
     return (
-      <div className="fixed inset-0 bg-black flex items-center justify-center z-50">
+      <div data-testid="preloader" className="fixed inset-0 bg-black flex items-center justify-center z-50">
         <div className="text-center">
           <motion.div
             className="w-64 h-2 bg-white/20 rounded-full overflow-hidden mb-4"
@@ -275,6 +283,7 @@ export const SmartPreloader = memo(({
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2 }}
+            data-testid="preloader-progress"
           >
             Loading... {Math.round(progress)}%
           </motion.p>
