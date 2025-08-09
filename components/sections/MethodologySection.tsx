@@ -16,7 +16,7 @@ export function MethodologySection() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={animationConfig.pageTransition}
-          viewport={{ once: true, margin: animationConfig.viewportMargin }}
+          viewport={{ once: true, margin: "-20px" }}
         >
           <PremiumHeading level={1} className="mb-8" gradient="from-green-400 to-blue-400">
             My <span className="font-black">Methodology</span>
@@ -26,128 +26,101 @@ export function MethodologySection() {
           </PremiumText>
         </motion.div>
         
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {methodology.map((step, index) => (
             <motion.div
               key={step.step}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, y: 40, scale: 0.9 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
               transition={{
-                duration: 0.6,
-                delay: index * animationConfig.staggerDelay,
-                ease: "easeOut"
+                duration: 0.8,
+                delay: index * 0.15,
+                ease: [0.16, 1, 0.3, 1]
               }}
-              viewport={{ once: true, margin: "-30px" }}
+              viewport={{ once: true, margin: "-20px" }}
               className="relative group"
             >
-              {/* Premium 3D Card Container */}
+              {/* Clean Premium Card Container */}
               <motion.div
-                className="h-full bg-black/60 backdrop-blur-xl border border-white/20 hover:border-white/40 transition-all duration-500 relative overflow-hidden rounded-3xl min-h-[420px] flex flex-col shadow-2xl"
-                whileHover={{ y: -12, scale: 1.02 }}
-                transition={{ duration: 0.3 }}
+                className="h-full relative overflow-hidden rounded-2xl min-h-[420px] flex flex-col group bg-gradient-to-br from-white/10 via-white/5 to-white/10 backdrop-blur-xl border border-white/20"
+                whileHover={{ 
+                  y: -8, 
+                  scale: 1.02
+                }}
+                transition={{ 
+                  duration: 0.3, 
+                  ease: [0.16, 1, 0.3, 1]
+                }}
               >
-                {/* Premium gradient border animation */}
-                <motion.div
-                  className={`absolute inset-0 bg-gradient-to-r ${step.iconGradient} opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-500`}
-                />
+                {/* Clean Glass Background */}
+                <div className="absolute inset-0 bg-black/30 backdrop-blur-xl rounded-2xl" />
+                
+                {/* Subtle Border Glow */}
+                <div className={`absolute inset-0 rounded-2xl bg-gradient-to-r ${step.iconGradient} opacity-0 group-hover:opacity-20 blur-xl transition-all duration-500`} />
 
-                {/* 3D depth layers */}
-                <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                <div className="absolute inset-1 bg-gradient-to-br from-white/5 to-transparent rounded-3xl opacity-50" />
-                <div className="absolute inset-2 bg-gradient-to-br from-white/3 to-transparent rounded-2xl opacity-30" />
+                <div className="p-8 text-center relative z-10 flex flex-col h-full justify-between">
+                  {/* Clean 3D Icon */}
+                  <div className="mb-6">
+                    <motion.div
+                      className={`w-20 h-20 mx-auto bg-gradient-to-br ${step.iconGradient} rounded-2xl flex items-center justify-center text-white shadow-xl`}
+                      whileHover={{ 
+                        scale: 1.1,
+                        transition: { duration: 0.3 }
+                      }}
+                    >
+                      <div className="relative z-20 scale-110">
+                        {step.icon}
+                      </div>
+                    </motion.div>
+                  </div>
 
-                <div className="p-8 text-center relative z-10 flex flex-col h-full">
-                  {/* Enhanced 3D Icon */}
+                  {/* Clean Step Number */}
+                  <div className="mb-4">
+                    <div className="text-4xl font-black text-white/90">
+                      {step.step}
+                    </div>
+                  </div>
+
+                  {/* Clean Title */}
+                  <div className="mb-4">
+                    <h3 className="text-xl font-bold leading-tight text-white">
+                      {step.title}
+                    </h3>
+                    <div className="w-12 h-0.5 bg-gradient-to-r from-transparent via-white/40 to-transparent mx-auto mt-3" />
+                  </div>
+
+                  {/* Clean Description */}
+                  <div className="mb-6 flex-1 flex items-center">
+                    <p className="text-gray-200 leading-relaxed text-base">
+                      {step.description}
+                    </p>
+                  </div>
+
+                  {/* Clean Duration Badge */}
+                  <div className="mb-4">
+                    <div className={`inline-flex items-center px-3 py-1 bg-gradient-to-r ${step.iconGradient} rounded-full text-white text-sm font-medium`}>
+                      <div className="w-1.5 h-1.5 bg-white rounded-full mr-2" />
+                      {step.duration || '1-2 days'}
+                    </div>
+                  </div>
+
+                  {/* Clean Details Section */}
                   <motion.div
-                    className={`w-20 h-20 mx-auto mb-8 bg-gradient-to-r ${step.iconGradient} rounded-3xl flex items-center justify-center text-white shadow-2xl relative`}
-                    animate={{
-                      y: [0, -6, 0],
-                      rotateY: [0, 5, 0],
-                      boxShadow: [
-                        "0 10px 30px rgba(0,0,0,0.3)",
-                        "0 15px 40px rgba(0,0,0,0.4)",
-                        "0 10px 30px rgba(0,0,0,0.3)"
-                      ]
-                    }}
-                    transition={{
-                      duration: 4,
-                      repeat: Infinity,
-                      ease: "easeInOut",
-                      delay: index * 0.5
-                    }}
-                    whileHover={{ scale: 1.1, rotateY: 15 }}
+                    className="border-t border-white/20 pt-4"
+                    initial={{ opacity: 0.7 }}
+                    whileHover={{ opacity: 1 }}
+                    transition={{ duration: 0.3 }}
                   >
-                    {/* 3D highlight */}
-                    <div className="absolute inset-2 bg-gradient-to-br from-white/30 to-transparent rounded-2xl" />
-                    <div className="relative z-10 scale-110">
-                      {step.icon}
+                    <div className="bg-white/5 rounded-xl p-3 backdrop-blur-sm">
+                      <p className="text-sm text-gray-200 leading-relaxed">
+                        {step.details}
+                      </p>
+                      <div className="mt-2 flex items-center text-xs text-green-300">
+                        <div className="w-1.5 h-1.5 bg-green-400 rounded-full mr-2" />
+                        <span>Deliverable: {step.deliverable || 'Technical roadmap & project timeline'}</span>
+                      </div>
                     </div>
                   </motion.div>
-
-                  {/* Premium step number */}
-                  <motion.div
-                    className="text-4xl font-black text-white mb-6 relative"
-                    animate={{
-                      textShadow: [
-                        "0 0 20px rgba(255,255,255,0.3)",
-                        "0 0 30px rgba(255,255,255,0.5)",
-                        "0 0 20px rgba(255,255,255,0.3)"
-                      ]
-                    }}
-                    transition={{
-                      duration: 3,
-                      repeat: Infinity,
-                      ease: "easeInOut"
-                    }}
-                  >
-                    {step.step}
-                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent blur-sm" />
-                  </motion.div>
-
-                  {/* Enhanced title */}
-                  <h3 className="text-xl font-bold text-white mb-4 leading-tight min-h-[3.5rem] flex items-center justify-center">
-                    <span className="text-center bg-gradient-to-r from-white to-gray-200 bg-clip-text text-transparent">
-                      {step.title}
-                    </span>
-                  </h3>
-
-                  {/* Premium description */}
-                  <p className="text-gray-100 mb-6 leading-relaxed flex-1 font-medium drop-shadow-md">
-                    {step.description}
-                  </p>
-
-                  {/* Enhanced expandable details */}
-                  <motion.div
-                    className="overflow-hidden border-t border-white/20 pt-6 mt-auto"
-                    initial={{ height: 0, opacity: 0 }}
-                    whileHover={{ height: "auto", opacity: 1 }}
-                    transition={{ duration: 0.4, ease: "easeOut" }}
-                  >
-                    <p className="text-sm text-gray-100 leading-relaxed font-medium drop-shadow-sm">
-                      {step.details}
-                    </p>
-                  </motion.div>
-
-                  {/* Premium background gradient */}
-                  <div className={`absolute inset-0 bg-gradient-to-br ${step.bgColor} rounded-3xl opacity-0 group-hover:opacity-10 transition-opacity duration-500 -z-10`} />
-
-                  {/* Premium shine effect */}
-                  <motion.div
-                    className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent w-32 -translate-x-full"
-                    animate={{
-                      translateX: ['0%', '200%']
-                    }}
-                    transition={{
-                      duration: 2.5,
-                      ease: 'easeInOut',
-                      repeat: Infinity,
-                      repeatDelay: 5 + index
-                    }}
-                  />
-
-                  {/* Corner accents */}
-                  <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-bl from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                  <div className="absolute bottom-0 left-0 w-20 h-20 bg-gradient-to-tr from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 </div>
               </motion.div>
             </motion.div>
@@ -159,7 +132,7 @@ export function MethodologySection() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          viewport={{ once: true, margin: animationConfig.viewportMargin }}
+          viewport={{ once: true, margin: "-20px" }}
         >
           <SafeMagneticButton>
             <PremiumButton size="xl" gradient="from-green-600 to-blue-600">

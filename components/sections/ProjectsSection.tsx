@@ -19,12 +19,12 @@ export function ProjectsSection({ projects, settings, onViewCaseStudy }: Project
   return (
     <section id="projects" className="py-16 bg-gradient-to-b from-purple-950/20 via-black to-blue-950/20">
       <PremiumContainer>
-        <OptimizedMotion
+        <motion.div
           className="text-center mb-20"
           initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
+          whileInView={{ opacity: 1, y: 0 }}
           transition={animationConfig.pageTransition}
-          viewport={{ once: true, margin: animationConfig.viewportMargin }}
+          viewport={{ once: true, margin: "-20px" }}
         >
           <PremiumHeading level={1} className="mb-8" gradient="from-pink-400 to-purple-400">
             Featured <span className="font-black">Projects</span>
@@ -32,7 +32,7 @@ export function ProjectsSection({ projects, settings, onViewCaseStudy }: Project
           <PremiumText size="xl" color="secondary" className="max-w-4xl mx-auto">
             Real-world solutions delivering measurable business impact
           </PremiumText>
-        </OptimizedMotion>
+        </motion.div>
 
         {/* Projects Grid - 2 columns, 3 rows for 6 projects */}
         <div className="grid lg:grid-cols-2 gap-8 mb-16">
@@ -55,7 +55,7 @@ export function ProjectsSection({ projects, settings, onViewCaseStudy }: Project
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          viewport={{ once: true, margin: animationConfig.viewportMargin }}
+          viewport={{ once: true, margin: "-20px" }}
         >
           <SafeMagneticButton>
             <a href={settings.github} target="_blank" rel="noopener noreferrer" className="inline-block">

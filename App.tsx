@@ -156,7 +156,7 @@ function AppContent() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={animationConfig.pageTransition}
-            viewport={{ once: true, margin: animationConfig.viewportMargin }}
+            viewport={{ once: true, margin: "-20px" }}
           >
             <PremiumHeading level={1} className="mb-8" gradient="from-cyan-400 to-blue-400">
               Frequently Asked <span className="font-black">Questions</span>
@@ -175,7 +175,7 @@ function AppContent() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            viewport={{ once: true, margin: animationConfig.viewportMargin }}
+            viewport={{ once: true, margin: "-20px" }}
           >
             <Suspense fallback={<FallbackBlock label="Questions Button" />}>
               <SafeMagneticButton>

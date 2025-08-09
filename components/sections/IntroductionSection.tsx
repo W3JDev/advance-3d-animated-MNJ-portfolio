@@ -21,7 +21,7 @@ export function IntroductionSection({ settings }: IntroductionSectionProps) {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={animationConfig.pageTransition}
-          viewport={{ once: true, margin: animationConfig.viewportMargin }}
+          viewport={{ once: true, margin: "-20px" }}
         >
           <PremiumHeading level={1} className="mb-8" gradient="from-blue-400 to-purple-400">
             A Unique <span className="font-black block">Perspective</span>
@@ -38,7 +38,7 @@ export function IntroductionSection({ settings }: IntroductionSectionProps) {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          viewport={{ once: true, margin: animationConfig.viewportMargin }}
+          viewport={{ once: true, margin: "-20px" }}
         >
           <SafeMagneticButton>
             <PremiumButton size="lg" gradient="from-blue-600 to-purple-600">

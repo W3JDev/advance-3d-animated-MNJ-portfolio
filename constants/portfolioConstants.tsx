@@ -73,7 +73,9 @@ export const methodology = [
     details: 'User interviews, market research, competitive analysis, technical feasibility assessment',
     iconGradient: 'from-amber-500 to-orange-500',
     numberGradient: 'from-amber-400 to-orange-400',
-    bgColor: 'from-amber-500/10 to-orange-500/10'
+    bgColor: 'from-amber-500/10 to-orange-500/10',
+    duration: '1-2 days',
+    deliverable: 'Technical roadmap & project timeline'
   },
   {
     step: '02',
@@ -83,7 +85,9 @@ export const methodology = [
     details: 'Wireframing, prototyping, system design, database architecture, API planning',
     iconGradient: 'from-blue-500 to-cyan-500',
     numberGradient: 'from-blue-400 to-cyan-400',
-    bgColor: 'from-blue-500/10 to-cyan-500/10'
+    bgColor: 'from-blue-500/10 to-cyan-500/10',
+    duration: '3-5 days',
+    deliverable: 'Design mockups & system architecture'
   },
   {
     step: '03',
@@ -93,7 +97,9 @@ export const methodology = [
     details: 'Agile development, automated testing, code reviews, performance optimization',
     iconGradient: 'from-emerald-500 to-teal-500',
     numberGradient: 'from-emerald-400 to-teal-400',
-    bgColor: 'from-emerald-500/10 to-teal-500/10'
+    bgColor: 'from-emerald-500/10 to-teal-500/10',
+    duration: '2-4 weeks',
+    deliverable: 'Fully tested application & documentation'
   },
   {
     step: '04',
@@ -103,14 +109,16 @@ export const methodology = [
     details: 'Deployment automation, monitoring setup, performance tuning, user feedback integration',
     iconGradient: 'from-purple-500 to-pink-500',
     numberGradient: 'from-purple-400 to-pink-400',
-    bgColor: 'from-purple-500/10 to-pink-500/10'
+    bgColor: 'from-purple-500/10 to-pink-500/10',
+    duration: '1-2 days',
+    deliverable: 'Live application & monitoring dashboard'
   }
 ];
 
 export const animationConfig = {
   pageTransition: { duration: 0.6 },
   staggerDelay: 0.1,
-  viewportMargin: "0px 0px -100px 0px", // Better visibility - trigger animations earlier
+  viewportMargin: "0px 0px -50px 0px", // Fixed - less aggressive margin for better visibility
   scrollConfig: {
     stiffness: 100,
     damping: 30,

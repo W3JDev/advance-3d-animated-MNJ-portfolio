@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { ExternalLink, Github, Eye, Calendar, Users, Clock } from 'lucide-react';
 import { PremiumHeading, PremiumText } from './PremiumTypography';
+import { ProjectAnalytics } from './ProjectAnalytics';
 
 interface Project {
   id: string;
@@ -67,6 +68,8 @@ export function AdvancedProjectCard({ project, index, onViewCaseStudy }: Advance
       viewport={{ once: true, margin: "-20px" }}
       className="group relative w-full"
     >
+      {/* Analytics tracking */}
+      <ProjectAnalytics projectName={safeProject.title} projectId={safeProject.id} />
       <div className="relative bg-black/90 backdrop-blur-xl border border-white/30 rounded-2xl p-6 hover:border-white/50 transition-all duration-300 overflow-hidden h-full flex flex-col min-h-[500px] shadow-2xl">
         {/* Enhanced gradient background overlay */}
         <div className={`absolute inset-0 bg-gradient-to-br ${safeProject.gradient} opacity-0 group-hover:opacity-15 transition-opacity duration-300 rounded-2xl`} />

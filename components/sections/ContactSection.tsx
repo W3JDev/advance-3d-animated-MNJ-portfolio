@@ -19,7 +19,7 @@ export function ContactSection({ settings, onContactClick }: ContactSectionProps
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={animationConfig.pageTransition}
-          viewport={{ once: true, margin: animationConfig.viewportMargin }}
+          viewport={{ once: true, margin: "-20px" }}
         >
           <PremiumHeading level={1} className="mb-12" gradient="from-yellow-400 to-orange-400">
             Ready to <span className="font-black">Innovate?</span>
@@ -36,7 +36,7 @@ export function ContactSection({ settings, onContactClick }: ContactSectionProps
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.6 }}
-            viewport={{ once: true, margin: animationConfig.viewportMargin }}
+            viewport={{ once: true, margin: "-20px" }}
           >
             <SafeMagneticButton>
               <a href={`mailto:${settings.email}`} target="_blank" rel="noopener noreferrer">
@@ -76,7 +76,7 @@ export function ContactSection({ settings, onContactClick }: ContactSectionProps
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            viewport={{ once: true, margin: animationConfig.viewportMargin }}
+            viewport={{ once: true, margin: "-20px" }}
           >
             <SafeMagneticButton>
               <PremiumButton 

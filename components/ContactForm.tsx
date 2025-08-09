@@ -27,6 +27,7 @@ import { PremiumHeading, PremiumText, PremiumContainer } from './PremiumTypograp
 import { PremiumGlassCard } from './PremiumCard';
 import { PremiumButton } from './PremiumButton';
 import { useContactForm } from './StaticDataProvider';
+import { supabaseUtils, checkSupabaseConfig } from '../utils/supabase/client';
 import { toast } from 'sonner';
 
 const contactSchema = z.object({
@@ -43,6 +44,7 @@ type ContactFormData = z.infer<typeof contactSchema>;
 
 export function ContactForm() {
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const { submitInquiry, loading } = useContactForm();
   
   const {
@@ -57,8 +59,32 @@ export function ContactForm() {
   });
 
   const onSubmit = async (data: ContactFormData) => {
+    setIsSubmitting(true);
+    
     try {
-      // Ensure required fields are present
+      // Try Supabase first if configured
+      if (checkSupabaseConfig()) {
+        const result = await supabaseUtils.submitContactForm({
+          name: data.name,
+          email: data.email,
+          message: `Subject: ${data.subject}\n\n${data.message}`,
+          company: data.projectType || undefined,
+          project_type: data.projectType || undefined,
+          budget_range: data.budget || undefined,
+          timeline: data.timeline || undefined,
+        });
+
+        if (result.success) {
+          setIsSubmitted(true);
+          toast.success('Message sent successfully! I\'ll get back to you soon.');
+          reset();
+          return;
+        } else {
+          console.warn('Supabase submission failed, falling back to static method');
+        }
+      }
+
+      // Fallback to static method
       const submissionData = {
         name: data.name || '',
         email: data.email || '',
@@ -78,6 +104,8 @@ export function ContactForm() {
       }
     } catch (error) {
       toast.error(error instanceof Error ? error.message : 'Failed to send message');
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -405,9 +433,9 @@ export function ContactForm() {
                   size="lg"
                   gradient="from-blue-600 via-purple-600 to-pink-600"
                   className="w-full text-lg"
-                  disabled={loading}
+                  disabled={isSubmitting || loading}
                 >
-                  {loading ? (
+                  {(isSubmitting || loading) ? (
                     <>
                       <motion.div
                         animate={{ rotate: 360 }}

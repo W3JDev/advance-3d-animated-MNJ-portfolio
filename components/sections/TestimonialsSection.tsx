@@ -21,7 +21,7 @@ export function TestimonialsSection({ testimonials, settings, onContactClick }: 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={animationConfig.pageTransition}
-          viewport={{ once: true, margin: animationConfig.viewportMargin }}
+          viewport={{ once: true, margin: "-20px" }}
         >
           <PremiumHeading level={1} className="mb-8" gradient="from-yellow-400 to-orange-400">
             Client <span className="font-black">Success Stories</span>
@@ -38,7 +38,7 @@ export function TestimonialsSection({ testimonials, settings, onContactClick }: 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          viewport={{ once: true, margin: animationConfig.viewportMargin }}
+          viewport={{ once: true, margin: "-20px" }}
         >
           <SafeMagneticButton>
             <PremiumButton 
